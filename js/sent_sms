@@ -1,0 +1,28 @@
+function sent_sms(){ 
+ 
+var telefone =document.getElementById('telefone').value;
+var mensagem =document.getElementById('mensagem').value;
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://connect.routee.net/sms",
+  "method": "POST",
+  "headers": {
+    //Put your Beaer here!! I can not share mine. Sorry
+    "authorization": "Bearer ",
+    "content-type": "application/json"
+  },
+  "processData": false,
+  "data": 
+         `{ \"body\": \"${mensagem}\",\"to\" : \"${telefone}\",\"from\": \"Superkianda\"}`
+
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+alert('SMS enviada...!');
+
+}
